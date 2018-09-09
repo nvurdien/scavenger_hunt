@@ -1,0 +1,7 @@
+{
+  "name": "omi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

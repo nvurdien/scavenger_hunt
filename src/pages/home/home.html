@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Riddles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-icon *ngIf="item.finish" name="ios-checkmark" item-start></ion-icon>
+      <ion-icon *ngIf="!item.finish" name="" item-start></ion-icon>
+      <ion-label (click)="presentModal(item.id)">Riddle {{item.id}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
