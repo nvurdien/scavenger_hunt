@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, IonicPage, NavParams, ViewController} from 'ionic-angular';
+import {AlertController, NavParams, ViewController} from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {RiddlesService} from "../../services/riddles";
 
-@IonicPage()
 @Component({
   selector: 'page-item',
   templateUrl: 'item.html',

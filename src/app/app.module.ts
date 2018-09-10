@@ -5,10 +5,10 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {ItemPage} from '../pages/item/item';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ItemPage} from '../pages/item/item';
 import {Camera} from "@ionic-native/camera";
 
 import {RiddlesService} from '../services/riddles'
