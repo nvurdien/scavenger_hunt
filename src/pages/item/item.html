@@ -23,7 +23,9 @@
         <ion-label>Image</ion-label>
         <ion-label>
           <img (click)="presentConfirm()" [src]="image" alt="">
-          <a (click)="takePicture()">Take Picture</a>
+          <!--<img #imgresult (click)="presentConfirm()" [src]="image" />-->
+          <input #inputcamera type="file" accept="image/*" capture="camera" />
+          <!--<a (click)="takePicture()">Take Picture</a>-->
         </ion-label>
       </ion-item>
     </ion-list>

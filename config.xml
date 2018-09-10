@@ -95,4 +95,7 @@
     </plugin>
     <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-telerik-imagepicker" spec="https://github.com/Telerik-Verified-Plugins/ImagePicker.git">
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
+    </plugin>
 </widget>

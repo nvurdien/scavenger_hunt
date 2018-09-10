@@ -1,25 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { NgModule } from '@angular/core';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {ItemPage} from '../pages/item/item';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import {Camera} from "@ionic-native/camera";
-
-import {RiddlesService} from '../services/riddles'
-
-export class CameraMock extends Camera {
-  getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
-    })
-  }
-}
+import { AppProviders } from './app.providers';
 
 @NgModule({
   declarations: [
@@ -38,13 +26,6 @@ export class CameraMock extends Camera {
     HomePage,
     ItemPage
   ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock},
-    // Camera,
-    RiddlesService
-  ]
+  providers: AppProviders.getProviders()
 })
 export class AppModule {}
