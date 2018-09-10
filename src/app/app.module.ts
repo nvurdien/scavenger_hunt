@@ -13,6 +13,14 @@ import {Camera} from "@ionic-native/camera";
 
 import {RiddlesService} from '../services/riddles'
 
+export class CameraMock extends Camera {
+  getPicture(options) {
+    return new Promise((resolve, reject) => {
+      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
+    })
+  }
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -34,8 +42,8 @@ import {RiddlesService} from '../services/riddles'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    // {provide: Camera, useClass: CameraMock}
-    Camera,
+    {provide: Camera, useClass: CameraMock},
+    // Camera,
     RiddlesService
   ]
 })
