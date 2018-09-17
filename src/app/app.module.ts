@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import {HomePage} from '../pages/home/home';
 import {ItemPage} from '../pages/item/item';
 
-import { AppProviders } from './app.providers';
+import {StatusBar} from "@ionic-native/status-bar";
+import {RiddlesService} from "../services/riddles";
+import {SplashScreen} from "@ionic-native/splash-screen";
+import {Camera} from "@ionic-native/camera";
 
 @NgModule({
   declarations: [
@@ -26,6 +29,13 @@ import { AppProviders } from './app.providers';
     HomePage,
     ItemPage
   ],
-  providers: AppProviders.getProviders()
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    // {provide: Camera, useClass: CameraMock},
+    Camera,
+    RiddlesService
+  ]
 })
 export class AppModule {}

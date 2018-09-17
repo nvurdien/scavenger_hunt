@@ -12,7 +12,7 @@ export class RiddlesService {
   fetchRiddles() {
     return this.storage.get('images').then((images) => {
             this.riddles = list;
-            let ima = images != null ? images : Array(this.riddles.length).fill('');
+            let ima = images != null && images.length === this.riddles.length ? images : Array(this.riddles.length).fill('');
             this.images = ima;
             this.storage.set('images', ima).then();
             return this.images;

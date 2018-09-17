@@ -12,7 +12,7 @@ import fixOrientation from 'fix-orientation';
 export class ItemPage implements OnInit {
 
   @ViewChild('inputcamera') cameraInput: ElementRef;
-  @ViewChild('imgresult') imgResult: ElementRef;
+  // @ViewChild('imgresult') imgResult: ElementRef;
   item;
   image:string;
   options: CameraOptions = {
@@ -89,7 +89,7 @@ export class ItemPage implements OnInit {
           handler: () => {
             this.image = '';
             this.riddlesService.removeImage(this.item.id-1);
-            this.dismiss();
+            // this.dismiss();
           }
         }
       ]
@@ -99,32 +99,33 @@ export class ItemPage implements OnInit {
 
   ionViewDidLoad() {
     //MY BIT
-    const element = this.cameraInput.nativeElement as HTMLInputElement;
-    element.onchange = () => {
+      const element = this.cameraInput.nativeElement as HTMLInputElement;
+      element.onchange = () => {
 
-      this.loading.turnOn();
+        this.loading.turnOn();
 
-      const reader = new FileReader();
+        const reader = new FileReader();
 
-      reader.onload = (r: any) => {
+        reader.onload = (r: any) => {
 
-        //THIS IS THE ORIGINAL BASE64 STRING AS SNAPPED FROM THE CAMERA
-        //THIS IS PROBABLY THE ONE TO UPLOAD BACK TO YOUR DB AS IT'S UNALTERED
-        //UP TO YOU, NOT REALLY BOTHERED
-        let base64 = r.target.result as string;
+          //THIS IS THE ORIGINAL BASE64 STRING AS SNAPPED FROM THE CAMERA
+          //THIS IS PROBABLY THE ONE TO UPLOAD BACK TO YOUR DB AS IT'S UNALTERED
+          //UP TO YOU, NOT REALLY BOTHERED
+          let base64 = r.target.result as string;
 
-        //FIXING ORIENTATION USING NPM PLUGIN fix-orientation
-        fixOrientation(base64, { image: true }, (fixed: string, image: any) => {
-          //fixed IS THE NEW VERSION FOR DISPLAY PURPOSES
-          this.image = fixed;
-          this.riddlesService.addImage(this.item.id-1, this.image);
-          this.loading.turnOff();
-        });
+          //FIXING ORIENTATION USING NPM PLUGIN fix-orientation
+          fixOrientation(base64, { image: true }, (fixed: string, image: any) => {
+            //fixed IS THE NEW VERSION FOR DISPLAY PURPOSES
+            this.image = fixed;
+            this.riddlesService.addImage(this.item.id-1, this.image);
 
-      };
+          });
 
-      reader.readAsDataURL(element.files[0]);
-    };
-  }
+        };
+        this.loading.turnOff();
+
+        reader.readAsDataURL(element.files[0]);
+      }
+    }
 
 }

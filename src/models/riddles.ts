@@ -1,3 +1,3 @@
 export class Riddle {
-  constructor(public id: number, public riddle: string, public finish?: boolean, public image?:string) {}
+  constructor(public riddle: string, public points: number, public id?: number, public finish?: boolean, public image?:string) {}
 }

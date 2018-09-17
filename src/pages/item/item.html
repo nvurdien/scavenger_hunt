@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Riddle {{item.id}}
+      {{item.riddle}}
     </ion-title>
     <ion-buttons end padding="">
       <button ion-button (click)="dismiss()">
@@ -14,19 +14,26 @@
 
 <ion-content padding>
 
-    <ion-list>
-      <ion-item>
-        <ion-label>Riddle</ion-label>
-        <ion-label>{{item.riddle}}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Image</ion-label>
-        <ion-label>
-          <img (click)="presentConfirm()" [src]="image" alt="">
+
+          <!--<img (click)="presentConfirm()" [src]="image" alt="">-->
+          <ion-card>
+              <img  [src]="image" alt="" />
+
+            <ion-item>
+              <div item-start="">
+                <label button ion-button clear (input)="loading.turnOn()" for="file-upload">
+                  New Upload
+                </label>
+                <input #inputcamera id="file-upload" type="file"/>
+              </div>
+              <button *ngIf="image" ion-button clear (click)="presentConfirm()" item-end>Remove</button>
+            </ion-item>
+          </ion-card>
           <!--<img #imgresult (click)="presentConfirm()" [src]="image" />-->
-          <input #inputcamera type="file" accept="image/*" capture="camera" />
+  <ion-card-content>
+    <ion-item><h2>Riddle</h2><p item-end="">{{item.riddle}}</p></ion-item>
+    <ion-item><h2>Points</h2> <p item-end="">{{item.points}}</p></ion-item>
+
+  </ion-card-content>
           <!--<a (click)="takePicture()">Take Picture</a>-->
-        </ion-label>
-      </ion-item>
-    </ion-list>
 </ion-content>

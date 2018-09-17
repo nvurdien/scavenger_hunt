@@ -1,17 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Riddles</ion-title>
+    <ion-buttons left><ion-title>Riddles</ion-title></ion-buttons>
+    <ion-buttons right><ion-title>Total: {{total}}</ion-title></ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon *ngIf="item.finish" name="ios-checkmark" item-start></ion-icon>
-      <ion-icon *ngIf="!item.finish" name="" item-start></ion-icon>
-      <ion-label (click)="presentModal(item.id)">Riddle {{item.id}}</ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-card *ngFor="let item of keys">
+      <ion-list>
+        <ion-card-header>{{item}} Points</ion-card-header>
+        <ion-item *ngFor="let it of riddles[item]">
+          <ion-icon *ngIf="it.finish" name="ios-checkmark" item-start></ion-icon>
+          <ion-icon *ngIf="!it.finish" name="ios-radio-button-off" item-start></ion-icon>
+          <ion-label (click)="presentModal(it.id)">{{it.riddle}}</ion-label>
+          <ion-icon item-end name="ios-arrow-forward"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
 </ion-content>

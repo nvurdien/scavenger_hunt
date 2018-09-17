@@ -4,7 +4,6 @@ import { Camera } from '@ionic-native/camera';
 import {StatusBar} from "@ionic-native/status-bar";
 import {RiddlesService} from "../services/riddles";
 import {SplashScreen} from "@ionic-native/splash-screen";
-import {ImagePicker} from "@ionic-native/image-picker";
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -29,7 +28,6 @@ export class AppProviders {
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         {provide: Camera, useClass: CameraMock},
         // Camera,
-        ImagePicker,
         RiddlesService
       ];
 
@@ -42,7 +40,6 @@ export class AppProviders {
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         // {provide: Camera, useClass: CameraMock},
         Camera,
-        ImagePicker,
         RiddlesService
       ];
 
